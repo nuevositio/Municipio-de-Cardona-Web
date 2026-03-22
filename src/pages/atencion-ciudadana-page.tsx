@@ -89,7 +89,9 @@ export function AtencionCiudadanaPage() {
                   {contactPhones.map((contact, index) => (
                     <tr
                       key={contact.id}
-                      className={index % 2 === 0 ? 'bg-white' : 'bg-[--soft-gray]'}
+                      className={
+                        index % 2 === 0 ? 'bg-[#f5f9fd]' : 'bg-[#e9f2f8]'
+                      }
                     >
                       <td className="whitespace-nowrap px-3 py-2 font-semibold text-[--ink-800]">
                         {contact.telefono}

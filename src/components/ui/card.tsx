@@ -6,7 +6,7 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'rounded-2xl border border-[--line] bg-white shadow-sm transition-shadow hover:shadow-md',
+        'rounded-2xl border border-[--line] bg-gradient-to-br from-[#f6fbff] via-[#edf6fc] to-[#e5f3ea] shadow-sm transition-shadow hover:shadow-md',
         className,
       )}
       {...props}

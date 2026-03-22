@@ -58,7 +58,7 @@ export function SiteFooter() {
             </li>
             <li className="flex items-center gap-2">
               <Mail size={15} className="shrink-0 text-white/50" />
-              contacto@municipiocardona.gub.uy
+              municipio.cardona@soriano.gub.uy
             </li>
           </ul>
         </section>

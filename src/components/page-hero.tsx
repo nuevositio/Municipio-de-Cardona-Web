@@ -8,7 +8,7 @@ interface PageHeroProps {
 export function PageHero({ title, description }: PageHeroProps) {
   return (
     <motion.header
-      className="rounded-3xl border border-[--line] bg-gradient-to-r from-[--soft-blue] via-white to-[--soft-green] p-8 md:p-10"
+      className="rounded-3xl border border-[--line] bg-gradient-to-r from-[#dcecf8] via-[#eef6fc] to-[#def1e6] p-8 md:p-10 shadow-sm"
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
