@@ -1,0 +1,20 @@
+import { Helmet } from 'react-helmet-async'
+
+interface SEOProps {
+  title: string
+  description: string
+}
+
+const BASE_TITLE = 'Municipio de Cardona'
+
+export function SEO({ title, description }: SEOProps) {
+  return (
+    <Helmet>
+      <title>{`${title} | ${BASE_TITLE}`}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={`${title} | ${BASE_TITLE}`} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+    </Helmet>
+  )
+}
