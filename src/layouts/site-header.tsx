@@ -3,15 +3,18 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
+import { Button } from '@/components/ui/button'
 import { navItems } from '@/data/navigation'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[--line] bg-white/95 backdrop-blur-sm">
+    <header
+      className="sticky top-0 z-50 border-b border-white/20 text-white backdrop-blur-sm"
+      style={{ backgroundColor: '#0f4c81' }}
+    >
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3" aria-label="Ir al inicio">
           <img
@@ -20,10 +23,10 @@ export function SiteHeader() {
             className="h-11 w-11 rounded-xl object-cover"
           />
           <div>
-            <p className="font-heading text-base leading-none text-[--ink-900] md:text-lg">
+            <p className="font-heading text-base leading-none text-white md:text-lg">
               Municipio de Cardona
             </p>
-            <p className="text-xs text-[--ink-600] md:text-sm">Gobierno local</p>
+            <p className="text-xs text-white/75 md:text-sm">Gobierno local</p>
           </div>
         </Link>
 
@@ -38,8 +41,8 @@ export function SiteHeader() {
                   cn(
                     'inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-[--soft-blue] text-[--brand-blue-700]'
-                      : 'text-[--ink-700] hover:bg-[--soft-blue] hover:text-[--ink-900]',
+                      ? 'bg-[var(--brand-green)] text-white hover:bg-[var(--brand-green-700)]'
+                      : 'text-white/90 hover:bg-white/15 hover:text-white',
                   )
                 }
               >
@@ -51,13 +54,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:inline-flex">
-            <a href="#atencion">Acceso</a>
-          </Button>
           <Button
             variant="outline"
             size="icon"
-            className="lg:hidden"
+            className="border-white/40 bg-transparent text-white hover:bg-white/15 hover:text-white lg:hidden"
             aria-label={isOpen ? 'Cerrar menu' : 'Abrir menu'}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -74,7 +74,8 @@ export function SiteHeader() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-[--line] bg-white lg:hidden"
+            className="border-t border-white/20 text-white lg:hidden"
+            style={{ backgroundColor: '#0a3357' }}
           >
             <nav className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Navegacion mobile">
               {navItems.map((item) => {
@@ -88,8 +89,8 @@ export function SiteHeader() {
                       cn(
                         'inline-flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium',
                         isActive
-                          ? 'bg-[--soft-blue] text-[--brand-blue-700]'
-                          : 'text-[--ink-700] hover:bg-[--soft-blue]',
+                          ? 'bg-[var(--brand-green)] text-white hover:bg-[var(--brand-green-700)]'
+                          : 'text-white/90 hover:bg-white/15',
                       )
                     }
                   >
@@ -98,11 +99,6 @@ export function SiteHeader() {
                   </NavLink>
                 )
               })}
-              <Button asChild className="mt-2 w-full">
-                <a href="#atencion" onClick={() => setIsOpen(false)}>
-                  Acceso
-                </a>
-              </Button>
             </nav>
           </motion.div>
         ) : null}

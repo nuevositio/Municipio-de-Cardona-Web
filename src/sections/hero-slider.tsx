@@ -4,12 +4,18 @@ import { useCallback, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { featuredNews } from '@/data/news'
+import { news } from '@/data/news'
 import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { formatDate } from '@/lib/utils'
 
 export function HeroSlider() {
-  const items = useMemo(() => featuredNews.slice(0, 3), [])
+  const items = useMemo(
+    () =>
+      [...news]
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 5),
+    [],
+  )
   const [activeIndex, setActiveIndex] = useState(0)
 
   if (items.length === 0) {
@@ -41,19 +47,23 @@ export function HeroSlider() {
     setActiveIndex(index)
   }, [])
 
-  useAutoRotate(next, { enabled: items.length > 1, intervalMs: 7000 })
+  useAutoRotate(next, { enabled: items.length > 1, intervalMs: 5000 })
 
   const currentItem = items[activeIndex]
+  const leadParagraph = currentItem.content.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)[0] ?? currentItem.excerpt
 
   return (
-    <section aria-label="Noticias destacadas" className="relative overflow-hidden rounded-3xl border border-[--line] bg-white shadow-sm">
-      <div className="grid lg:grid-cols-[1.1fr_1fr]">
+    <section
+      aria-label="Noticias destacadas"
+      className="relative overflow-hidden rounded-3xl border border-[--line] bg-white shadow-2xl shadow-slate-900/20"
+    >
+      <div className="relative min-h-[380px] md:min-h-[460px]">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentItem.id}
             src={currentItem.image}
             alt={currentItem.title}
-            className="h-[360px] w-full object-cover lg:h-[440px]"
+            className="absolute inset-0 h-full w-full object-cover"
             initial={{ opacity: 0.35, scale: 1.03 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0.2 }}
@@ -61,26 +71,30 @@ export function HeroSlider() {
           />
         </AnimatePresence>
 
-        <div className="flex flex-col justify-between bg-gradient-to-br from-[--brand-blue] to-[--brand-blue-700] p-6 text-white md:p-8">
-          <div>
-            <p className="text-sm uppercase tracking-[0.12em] text-white/80">Noticia principal</p>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`content-${currentItem.id}`}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35 }}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a3357]/90 via-[#0a3357]/68 to-black/38" />
+
+        <div className="relative z-10 flex h-full flex-col justify-between p-6 text-white md:p-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${currentItem.id}`}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35 }}
+              className="max-w-3xl"
+            >
+              <p className="text-xs uppercase tracking-[0.16em] text-white/80 md:text-sm">Noticias del Municipio</p>
+              <h1 className="mt-3 font-heading text-2xl leading-tight text-white md:text-4xl">{currentItem.title}</h1>
+              <p className="mt-4 line-clamp-3 max-w-2xl text-sm text-white/90 md:text-base">{leadParagraph}</p>
+              <p className="mt-4 text-xs text-white/75 md:text-sm">{formatDate(currentItem.date)}</p>
+              <Button
+                asChild
+                className="mt-6 border-0 bg-[var(--brand-green)] text-white hover:bg-[var(--brand-green-700)]"
               >
-                <h1 className="mt-3 font-heading text-3xl leading-tight md:text-4xl">{currentItem.title}</h1>
-                <p className="mt-4 max-w-xl text-white/90">{currentItem.excerpt}</p>
-                <p className="mt-4 text-sm text-white/80">{formatDate(currentItem.date)}</p>
-                <Button asChild variant="secondary" className="mt-6">
-                  <Link to={`/noticias/${currentItem.slug}`}>Leer mas</Link>
-                </Button>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                <Link to={`/noticias/${currentItem.slug}`}>Leer noticia completa</Link>
+              </Button>
+            </motion.div>
+          </AnimatePresence>
 
           <div className="mt-8 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -91,7 +105,7 @@ export function HeroSlider() {
                   onClick={() => setFromDot(index)}
                   className={
                     index === activeIndex
-                      ? 'h-2.5 w-8 rounded-full bg-white'
+                      ? 'h-2.5 w-8 rounded-full bg-white shadow-sm shadow-black/30'
                       : 'h-2.5 w-2.5 rounded-full bg-white/45'
                   }
                   aria-label={`Ir a noticia ${index + 1}`}
@@ -99,10 +113,10 @@ export function HeroSlider() {
               ))}
             </div>
             <div className="flex gap-2">
-              <Button size="icon" variant="ghost" className="text-white hover:bg-white/15" onClick={prev}>
+              <Button size="icon" variant="ghost" className="bg-black/20 text-white hover:bg-black/35" onClick={prev}>
                 <ChevronLeft size={18} />
               </Button>
-              <Button size="icon" variant="ghost" className="text-white hover:bg-white/15" onClick={next}>
+              <Button size="icon" variant="ghost" className="bg-black/20 text-white hover:bg-black/35" onClick={next}>
                 <ChevronRight size={18} />
               </Button>
             </div>
