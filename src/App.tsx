@@ -1,6 +1,9 @@
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import { AdminRoute } from '@/components/admin/admin-route'
 import { SiteLayout } from '@/layouts/site-layout'
+import { AdminPage } from '@/pages/admin-page'
+import { AdminLoginPage } from '@/pages/admin-login-page'
 import { AtencionCiudadanaPage } from '@/pages/atencion-ciudadana-page'
 import { CulturaPage } from '@/pages/cultura-page'
 import { HomePage } from '@/pages/home-page'
@@ -11,6 +14,18 @@ import { TeatroPage } from '@/pages/teatro-page'
 import { TramitesPage } from '@/pages/tramites-page'
 
 const router = createBrowserRouter([
+  {
+    path: '/admin/login',
+    element: <AdminLoginPage />,
+  },
+  {
+    path: '/admin',
+    element: (
+      <AdminRoute>
+        <AdminPage />
+      </AdminRoute>
+    ),
+  },
   {
     path: '/',
     element: <SiteLayout />,

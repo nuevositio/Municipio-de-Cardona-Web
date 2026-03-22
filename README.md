@@ -1,148 +1,211 @@
 # Sitio Oficial - Municipio de Cardona
 
-Sitio institucional moderno, responsive y accesible construido para gestion manual de contenidos sin CMS ni backend.
+Sitio institucional en React + Vite + TypeScript con un backend Node.js + Express + SQLite para administrar noticias mediante un panel privado.
 
-## Stack Tecnologico
+## 1. Arquitectura
 
-- Vite
-- React
-- TypeScript (estricto)
-- Tailwind CSS
-- shadcn/ui
-- Framer Motion
-- React Router
-- React Helmet Async
-- Lucide React
+### Frontend
 
-## Principios del Proyecto
+- SPA con React Router.
+- Rutas publicas del sitio institucional.
+- Rutas privadas:
+  - `/admin/login`
+  - `/admin` (protegida por token JWT)
+- Estetica institucional reutilizando variables CSS existentes:
+  - azul institucional
+  - verde secundario
+  - gris claro
+  - blanco
 
-- Sin WordPress
-- Sin backend
-- Sin base de datos
-- Contenido 100% local y tipado
-- Mantenimiento simple para una sola persona
+### Backend
 
-## Instalacion
+- API REST con Express.
+- Autenticacion con JWT.
+- Un unico usuario administrador configurable por variables de entorno.
+- Base SQLite para persistencia.
+- Multer para subida de imagenes con validacion de tipo y tamano.
+
+### Persistencia
+
+- Archivo SQLite en `server/data/news.sqlite`.
+- Imagenes en `uploads/`.
+
+## 2. Estructura de Carpetas
+
+```text
+server/
+  data/
+  middleware/
+    auth.js
+    upload.js
+  routes/
+    auth-routes.js
+    news-routes.js
+  utils/
+    slugify.js
+  db.js
+  index.js
+
+src/
+  components/
+    admin/
+      admin-route.tsx
+    ui/
+  data/
+    news.ts (fallback local)
+  lib/
+    auth-storage.ts
+    news-api.ts
+    utils.ts
+  pages/
+    admin-login-page.tsx
+    admin-page.tsx
+    news-page.tsx
+    news-detail-page.tsx
+  ...
+
+uploads/
+.env.example
+```
+
+## 3. Backend Completo
+
+### Endpoints
+
+- `GET /api/health`
+- `POST /api/auth/login`
+- `GET /api/auth/me` (protegida)
+- `GET /api/news`
+- `GET /api/news/:slug`
+- `POST /api/news` (protegida + imagen)
+- `PUT /api/news/:id` (protegida + imagen opcional)
+- `DELETE /api/news/:id` (protegida)
+
+### Tabla SQLite
+
+Tabla `news` con campos:
+
+- `id`
+- `title`
+- `slug`
+- `excerpt`
+- `content`
+- `image`
+- `date`
+- `createdAt`
+- `updatedAt`
+
+## 4. Login Funcional
+
+- Ruta ` /admin/login`.
+- Credenciales validadas contra variables de entorno:
+  - `ADMIN_USERNAME`
+  - `ADMIN_PASSWORD`
+- El login devuelve JWT.
+- El token se guarda en `localStorage` y se envia como `Bearer`.
+
+## 5. CRUD de Noticias
+
+Panel `/admin` incluye:
+
+- Listado de noticias
+- Crear noticia
+- Editar noticia
+- Eliminar noticia con confirmacion
+
+Campos gestionados:
+
+- titulo
+- slug automatico editable
+- resumen
+- contenido
+- fecha
+- imagen destacada
+
+## 6. Subida de Imagenes
+
+Reglas implementadas en frontend y backend:
+
+- formatos permitidos: `jpg`, `jpeg`, `png`, `webp`
+- maximo: `1 MB`
+- recomendacion mostrada al usuario: entre `512 KB` y `1 MB`
+- almacenamiento en `uploads/`
+- vista previa antes de guardar
+
+## 7. Proteccion de Rutas
+
+- `AdminRoute` valida sesion via `GET /api/auth/me`.
+- Si no hay token o el token no es valido:
+  - redirige a `/admin/login`.
+
+## 8. Instalacion y Uso
+
+### Requisitos
+
+- Node.js 20+
+- npm
+
+### Variables de entorno
+
+1. Copiar `.env.example` a `.env`.
+2. Completar valores seguros:
+
+```env
+PORT=4000
+FRONTEND_ORIGIN=http://localhost:5173
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=tu_password_segura
+JWT_SECRET=un_secreto_largo_y_unico
+VITE_API_URL=http://localhost:4000
+```
+
+### Instalar dependencias
 
 ```bash
 npm install
 ```
 
-## Desarrollo Local
+### Ejecutar en desarrollo (frontend + backend)
 
 ```bash
-npm run dev
+npm run dev:full
 ```
 
-## Build de Produccion
+Tambien puedes ejecutarlos por separado:
+
+```bash
+npm run dev:server
+npm run dev:client
+```
+
+### Compilar frontend
 
 ```bash
 npm run build
 ```
 
-## Preview de Build
+### Levantar solo API
 
 ```bash
-npm run preview
+npm run start:server
 ```
 
-## Deploy en Netlify
+## 9. Rutas Principales
 
-El proyecto ya incluye:
+- Publicas:
+  - `/`
+  - `/noticias`
+  - `/noticias/:slug`
+  - `/tramites`
+  - `/cultura`
+  - `/teatro`
+  - `/atencion-ciudadana`
+- Privadas:
+  - `/admin/login`
+  - `/admin`
 
-- `netlify.toml` con comando de build y publish
-- `public/_redirects` para enrutado SPA
+## 10. Notas de Produccion
 
-Pasos:
-
-1. Conectar repositorio en Netlify.
-2. Confirmar build command: `npm run build`.
-3. Confirmar publish directory: `dist`.
-4. Deploy.
-
-## Estructura de Carpetas
-
-```text
-src/
-  components/
-    ui/
-  content/
-    news/
-    authorities/
-    transparency/
-  data/
-  hooks/
-  layouts/
-  lib/
-  pages/
-  sections/
-  types/
-```
-
-## Gestion Manual de Contenidos
-
-### Noticias
-
-Editar: `src/data/news.ts`
-
-Cada noticia incluye:
-
-- `id`
-- `slug`
-- `title`
-- `excerpt`
-- `content`
-- `image`
-- `date`
-- `category`
-- `featured`
-
-### Autoridades
-
-Editar: `src/data/authorities.ts`
-
-Cada autoridad incluye:
-
-- `id`
-- `name`
-- `role`
-- `image`
-- `order`
-
-### Transparencia
-
-Editar: `src/data/transparency.ts`
-
-Cada acceso/documento incluye:
-
-- `id`
-- `title`
-- `description`
-- `type`
-- `link`
-- `date` (opcional)
-
-## SEO y Accesibilidad
-
-- SEO basico por pagina con `react-helmet-async`
-- Estructura semantica con headings y secciones claras
-- Estados de foco visibles
-- Navegacion mobile y desktop accesible
-- Imagenes con atributos `alt`
-
-## Rutas Disponibles
-
-- `/`
-- `/noticias`
-- `/noticias/:slug`
-- `/tramites`
-- `/cultura`
-- `/teatro`
-- `/atencion-ciudadana`
-- `/404`
-
-## Mantenimiento Recomendado
-
-1. Actualizar contenidos en `src/data/*`.
-2. Ejecutar `npm run build` antes de publicar.
-3. Subir cambios al repositorio y redeploy en Netlify.
+- El frontend usa proxy de Vite en desarrollo para `/api` y `/uploads`.
+- Para produccion, configura `VITE_API_URL` apuntando al dominio de la API.
+- `uploads/` y `server/data/*.sqlite` estan ignorados en Git para evitar subir datos locales.

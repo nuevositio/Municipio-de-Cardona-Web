@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 
@@ -5,19 +6,63 @@ import { Badge } from '@/components/ui/badge'
 import { SEO } from '@/components/seo'
 import { news } from '@/data/news'
 import { formatDate } from '@/lib/utils'
+import { getPublicNewsBySlug, toPublicNewsItem } from '@/lib/news-api'
+import type { NewsItem } from '@/types/content'
 
 export function NewsDetailPage() {
   const { slug } = useParams<{ slug: string }>()
-  const item = news.find((entry) => entry.slug === slug)
+
+  const [item, setItem] = useState<NewsItem | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!slug) {
+      setItem(null)
+      setLoading(false)
+      return
+    }
+
+    const currentSlug = slug
+
+    let isMounted = true
+
+    async function loadDetail() {
+      try {
+        const apiItem = await getPublicNewsBySlug(currentSlug)
+
+        if (!isMounted) {
+          return
+        }
+
+        setItem(toPublicNewsItem(apiItem))
+      } catch {
+        if (!isMounted) {
+          return
+        }
+
+        const fallbackItem = news.find((entry) => entry.slug === currentSlug) ?? null
+        setItem(fallbackItem)
+      } finally {
+        if (isMounted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadDetail()
+
+    return () => {
+      isMounted = false
+    }
+  }, [slug])
+
+  if (loading) {
+    return <p className="mx-auto max-w-4xl text-[--ink-700]">Cargando noticia...</p>
+  }
 
   if (!item) {
     return <Navigate to="/404" replace />
   }
-
-  const paragraphs = item.content
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean)
 
   return (
     <article className="mx-auto max-w-4xl">
@@ -43,10 +88,8 @@ export function NewsDetailPage() {
       </div>
 
       <h1 className="mt-4 font-heading text-3xl text-[--ink-900] md:text-4xl">{item.title}</h1>
-      <div className="mt-5 space-y-5 text-left text-lg leading-relaxed text-[--ink-700]">
-        {paragraphs.map((paragraph, index) => (
-          <p key={`${item.id}-paragraph-${index}`}>{paragraph}</p>
-        ))}
+      <div className="mt-5 whitespace-pre-wrap text-left text-lg leading-relaxed text-[--ink-700]">
+        {item.content}
       </div>
     </article>
   )

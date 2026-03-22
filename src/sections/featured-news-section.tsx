@@ -1,8 +1,44 @@
+import { useEffect, useMemo, useState } from 'react'
+
 import { NewsCard } from '@/components/news-card'
 import { featuredNews } from '@/data/news'
+import { getPublicNews, toPublicNewsItem } from '@/lib/news-api'
+import type { NewsItem } from '@/types/content'
 
 export function FeaturedNewsSection() {
-  const items = featuredNews.slice(0, 4)
+  const [items, setItems] = useState<NewsItem[]>(featuredNews.slice(0, 4))
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadFeaturedNews() {
+      try {
+        const apiNews = await getPublicNews()
+
+        if (!isMounted) {
+          return
+        }
+
+        const normalized = apiNews.map(toPublicNewsItem)
+        const apiSlugs = new Set(normalized.map((n) => n.slug))
+        const merged = [...normalized, ...featuredNews.filter((n) => !apiSlugs.has(n.slug))].slice(0, 4)
+        setItems(merged)
+      } catch {
+        if (!isMounted) {
+          return
+        }
+        setItems(featuredNews.slice(0, 4))
+      }
+    }
+
+    loadFeaturedNews()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const hasItems = useMemo(() => items.length > 0, [items.length])
 
   return (
     <section className="mt-12" aria-labelledby="featured-news-title">
@@ -11,7 +47,7 @@ export function FeaturedNewsSection() {
           Noticias destacadas
         </h2>
       </div>
-      {items.length === 0 ? (
+      {!hasItems ? (
         <div className="rounded-2xl border border-dashed border-[--line] bg-white p-6 text-[--ink-700]">
           Aun no hay noticias destacadas cargadas.
         </div>

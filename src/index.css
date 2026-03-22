@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Urbanist:wght@600;700;800&display=swap');
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --brand-blue: #0f4c81;
@@ -15,9 +17,6 @@
   --ink-800: #2f3a46;
   --ink-700: #4a5562;
   --ink-600: #64707d;
-}
-
-@theme {
   --font-sans: 'Source Sans 3', sans-serif;
   --font-heading: 'Urbanist', sans-serif;
 }

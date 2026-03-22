@@ -1,22 +1,39 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { news } from '@/data/news'
 import { useAutoRotate } from '@/hooks/useAutoRotate'
+import { getPublicNews, toPublicNewsItem } from '@/lib/news-api'
 import { formatDate } from '@/lib/utils'
+import type { NewsItem } from '@/types/content'
+
+function buildSliderItems(apiItems: NewsItem[]) {
+  const apiSlugs = new Set(apiItems.map((n) => n.slug))
+  const merged = [...apiItems, ...news.filter((n) => !apiSlugs.has(n.slug))]
+  return merged
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 5)
+}
 
 export function HeroSlider() {
-  const items = useMemo(
-    () =>
-      [...news]
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 5),
-    [],
+  const [items, setItems] = useState<NewsItem[]>(
+    () => [...news].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 5),
   )
   const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    let isMounted = true
+    getPublicNews()
+      .then((apiNews) => {
+        if (!isMounted) return
+        setItems(buildSliderItems(apiNews.map(toPublicNewsItem)))
+      })
+      .catch(() => { /* mantiene datos estáticos */ })
+    return () => { isMounted = false }
+  }, [])
 
   if (items.length === 0) {
     return (

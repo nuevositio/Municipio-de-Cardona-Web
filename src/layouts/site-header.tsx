@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Lock, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -54,6 +54,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/admin/login"
+            className="hidden items-center gap-1.5 rounded-xl border border-white/30 px-3 py-2 text-xs font-medium text-white/80 transition-colors hover:bg-white/15 hover:text-white lg:inline-flex"
+            aria-label="Acceso administrador"
+          >
+            <Lock size={13} />
+            Admin
+          </Link>
           <Button
             variant="outline"
             size="icon"
@@ -99,6 +107,21 @@ export function SiteHeader() {
                   </NavLink>
                 )
               })}
+              <NavLink
+                to="/admin/login"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  cn(
+                    'inline-flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium',
+                    isActive
+                      ? 'bg-[var(--brand-green)] text-white'
+                      : 'text-white/70 hover:bg-white/10',
+                  )
+                }
+              >
+                <Lock size={17} />
+                Acceso Admin
+              </NavLink>
             </nav>
           </motion.div>
         ) : null}

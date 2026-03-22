@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { SEO } from '@/components/seo'
 import { Button } from '@/components/ui/button'
 import { AuthoritiesSection } from '@/sections/authorities-section'
+import { CouncilMinutesSection } from '@/sections/council-minutes-section'
 import { HeroSlider } from '@/sections/hero-slider'
 import { TransparencySection } from '@/sections/transparency-section'
 
@@ -34,6 +35,7 @@ export function HomePage() {
       </section>
 
       <AuthoritiesSection />
+      <CouncilMinutesSection />
       <TransparencySection />
     </>
   )
