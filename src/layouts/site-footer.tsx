@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16" style={{ backgroundColor: '#4a4a4a', color: '#fff' }}>
+    <footer className="mt-16" style={{ backgroundColor: 'var(--bg-dark)', color: '#fff' }}>
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
 
         {/* Identidad */}
         <section>
           <img
-            src="/images/logo-horizontal.png"
-            alt="Logo del Municipio"
-            className="h-14 w-auto object-contain"
+            src="/images/logo_municipio.webp"
+            alt="Logo Municipio de Cardona"
+            className="h-16 w-16 rounded-full object-contain bg-white p-0.5"
           />
           <p className="mt-3 text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)' }}>
             Gestión cercana, transparente y orientada al bienestar de toda la comunidad.

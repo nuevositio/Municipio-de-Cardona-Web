@@ -4,12 +4,17 @@
 @tailwind utilities;
 
 :root {
-  --brand-blue: #4a4a4a;
-  --brand-blue-700: #2e2e2e;
-  --brand-green: #D4920A;
-  --brand-green-700: #A57208;
-  --soft-blue: #eeeeee;
-  --soft-green: #fff8d6;
+  /* Azul derivado del cielo del logo (fondo oscuro → acentos) */
+  --brand-blue: #1E78A8;
+  --brand-blue-700: #155E88;
+  /* Verde derivado de las colinas del logo */
+  --brand-green: #4A8E22;
+  --brand-green-700: #397019;
+  /* Naranja del banner "Un Municipio Activo" */
+  --brand-orange: #D97B2A;
+  /* Fondos tenues */
+  --soft-blue: #DEF1FA;
+  --soft-green: #E3F4D4;
   --soft-gray: #f0eeec;
   --surface: #f8f8f7;
   --line: #e0ddda;
@@ -17,6 +22,9 @@
   --ink-800: #2f3a46;
   --ink-700: #4a5562;
   --ink-600: #64707d;
+  /* Fondo oscuro derivado del azul del logo (header / footer) */
+  --bg-dark: #1B5E82;
+  --bg-dark-700: #144A68;
   --font-sans: 'Source Sans 3', sans-serif;
   --font-heading: 'Urbanist', sans-serif;
 }
@@ -40,9 +48,9 @@ body {
   font-family: var(--font-sans);
   color: var(--ink-800);
   background:
-    radial-gradient(circle at 10% 0%, rgba(74, 74, 74, 0.10), transparent 38%),
-    radial-gradient(circle at 92% 6%, rgba(212, 146, 10, 0.08), transparent 36%),
-    linear-gradient(180deg, #f5f5f4 0%, #f8f8f7 45%, #fdf9ed 100%),
+    radial-gradient(circle at 10% 0%, rgba(30, 120, 168, 0.09), transparent 38%),
+    radial-gradient(circle at 92% 6%, rgba(74, 142, 34, 0.07), transparent 36%),
+    linear-gradient(180deg, #f0f6fa 0%, #f8f8f7 45%, #f3f9ef 100%),
     var(--surface);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -60,6 +68,6 @@ img {
 }
 
 :focus-visible {
-  outline: 3px solid #4a4a4a;
+  outline: 3px solid #1E78A8;
   outline-offset: 2px;
 }

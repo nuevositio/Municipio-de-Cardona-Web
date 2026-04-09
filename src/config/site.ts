@@ -28,8 +28,10 @@ export const SITE = {
 
   /** Colores de la marca (deben coincidir con las variables CSS en index.css) */
   colors: {
-    primary:   '#1D4ED8',   // --brand-blue
-    secondary: '#15803D',   // --brand-green
+    primary:   '#1E78A8',   // --brand-blue   (azul cielo del logo)
+    secondary: '#4A8E22',   // --brand-green  (verde colinas del logo)
+    accent:    '#D97B2A',   // --brand-orange (naranja del banner)
+    dark:      '#1B5E82',   // --bg-dark      (header / footer)
   },
 
   /** Información de contacto */

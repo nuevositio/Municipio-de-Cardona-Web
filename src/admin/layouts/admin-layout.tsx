@@ -53,9 +53,11 @@ export function AdminLayout() {
       >
         {/* Logo / cabecera */}
         <div className="flex items-center gap-3 border-b border-[--line] px-5 py-4">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[--brand-blue]">
-            <span className="font-heading text-sm font-bold text-white">M</span>
-          </div>
+          <img
+            src="/images/logo_municipio.webp"
+            alt="Logo Municipio"
+            className="h-9 w-9 rounded-full object-contain border border-[--line]"
+          />
           <div className="min-w-0">
             <p className="truncate font-heading text-sm font-bold text-[--ink-900]">
               Panel Admin
