@@ -13,18 +13,18 @@ export function SiteHeader() {
   return (
     <header
       className="sticky top-0 z-50 border-b border-white/20 text-white backdrop-blur-sm"
-      style={{ backgroundColor: '#0f4c81' }}
+      style={{ backgroundColor: '#4a4a4a' }}
     >
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3" aria-label="Ir al inicio">
           <img
-            src="/images/logo_municipio.webp"
-            alt="Logo del Municipio de Cardona"
-            className="h-11 w-11 rounded-xl object-cover"
+            src="/icono.png"
+            alt="Logo del Municipio"
+            className="h-11 w-11 rounded-xl object-contain"
           />
           <div>
             <p className="font-heading text-base leading-none text-white md:text-lg">
-              Municipio de Cardona
+              Tu Municipio
             </p>
             <p className="text-xs text-white/75 md:text-sm">Gobierno local</p>
           </div>
@@ -83,7 +83,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className="border-t border-white/20 text-white lg:hidden"
-            style={{ backgroundColor: '#0a3357' }}
+            style={{ backgroundColor: '#2e2e2e' }}
           >
             <nav className="mx-auto flex w-full max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Navegacion mobile">
               {navItems.map((item) => {

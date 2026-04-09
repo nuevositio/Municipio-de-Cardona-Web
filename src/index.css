@@ -4,15 +4,15 @@
 @tailwind utilities;
 
 :root {
-  --brand-blue: #0f4c81;
-  --brand-blue-700: #0a3357;
-  --brand-green: #2f7d5c;
-  --brand-green-700: #1f5b42;
-  --soft-blue: #e9f1f8;
-  --soft-green: #e8f4ee;
-  --soft-gray: #eef1f3;
-  --surface: #f7f9fb;
-  --line: #d7dee5;
+  --brand-blue: #4a4a4a;
+  --brand-blue-700: #2e2e2e;
+  --brand-green: #D4920A;
+  --brand-green-700: #A57208;
+  --soft-blue: #eeeeee;
+  --soft-green: #fff8d6;
+  --soft-gray: #f0eeec;
+  --surface: #f8f8f7;
+  --line: #e0ddda;
   --ink-900: #1f2a36;
   --ink-800: #2f3a46;
   --ink-700: #4a5562;
@@ -40,9 +40,9 @@ body {
   font-family: var(--font-sans);
   color: var(--ink-800);
   background:
-    radial-gradient(circle at 10% 0%, rgba(15, 76, 129, 0.2), transparent 38%),
-    radial-gradient(circle at 92% 6%, rgba(47, 125, 92, 0.18), transparent 36%),
-    linear-gradient(180deg, #edf5fb 0%, #f0f6fb 45%, #eaf4ee 100%),
+    radial-gradient(circle at 10% 0%, rgba(74, 74, 74, 0.10), transparent 38%),
+    radial-gradient(circle at 92% 6%, rgba(212, 146, 10, 0.08), transparent 36%),
+    linear-gradient(180deg, #f5f5f4 0%, #f8f8f7 45%, #fdf9ed 100%),
     var(--surface);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -60,6 +60,6 @@ img {
 }
 
 :focus-visible {
-  outline: 3px solid #0f4c81;
+  outline: 3px solid #4a4a4a;
   outline-offset: 2px;
 }

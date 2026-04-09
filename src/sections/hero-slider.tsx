@@ -35,6 +35,21 @@ export function HeroSlider() {
     return () => { isMounted = false }
   }, [])
 
+  // ── Todos los hooks deben declararse antes de cualquier return condicional ──
+  const next = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % items.length)
+  }, [items.length])
+
+  const prev = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length)
+  }, [items.length])
+
+  const setFromDot = useCallback((index: number) => {
+    setActiveIndex(index)
+  }, [])
+
+  useAutoRotate(next, { enabled: items.length > 1, intervalMs: 5000 })
+
   if (items.length === 0) {
     return (
       <section
@@ -51,20 +66,6 @@ export function HeroSlider() {
       </section>
     )
   }
-
-  const next = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % items.length)
-  }, [items.length])
-
-  const prev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + items.length) % items.length)
-  }, [items.length])
-
-  const setFromDot = useCallback((index: number) => {
-    setActiveIndex(index)
-  }, [])
-
-  useAutoRotate(next, { enabled: items.length > 1, intervalMs: 5000 })
 
   const currentItem = items[activeIndex]
   const leadParagraph = currentItem.content.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)[0] ?? currentItem.excerpt
@@ -88,7 +89,7 @@ export function HeroSlider() {
           />
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a3357]/90 via-[#0a3357]/68 to-black/38" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2e2e2e]/90 via-[#2e2e2e]/68 to-black/38" />
 
         <div className="relative z-10 flex h-full flex-col justify-between p-6 text-white md:p-8">
           <AnimatePresence mode="wait">

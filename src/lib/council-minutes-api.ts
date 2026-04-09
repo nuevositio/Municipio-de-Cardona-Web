@@ -1,82 +1,30 @@
-import { clearAdminToken, getAdminToken } from '@/lib/auth-storage'
+// ── Interfaces ────────────────────────────────────────────────────────────────
+import { API_BASE } from './api-base.js'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? ''
-
+/** Forma que devuelve el servidor para el sitio público. */
 export interface ApiCouncilMinute {
-  id: number
-  title: string
-  date: string
-  description: string
-  file: string
-  createdAt: string
-  updatedAt: string
+  id:          string
+  title:       string
+  slug:        string
+  summary:     string | null
+  fileUrl:     string | null
+  publishedAt: string | null
+  createdAt:   string
+  updatedAt:   string
 }
 
-async function apiRequest<T>(path: string, options: RequestInit & { token?: string } = {}): Promise<T> {
-  const { token, headers, ...rest } = options
+// ── Peticiones públicas ───────────────────────────────────────────────────────
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...rest,
-    headers: {
-      ...(headers ?? {}),
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-  })
-
-  if (!response.ok) {
-    let message = 'No se pudo procesar la solicitud.'
-    try {
-      const data = (await response.json()) as { message?: string }
-      message = data.message ?? message
-    } catch { /* sin cuerpo JSON */ }
-    if (response.status === 401) clearAdminToken()
-    throw new Error(message)
-  }
-
-  return (await response.json()) as T
+/** Construye la URL completa del archivo PDF. */
+export function getCouncilMinuteFileUrl(fileUrl: string | null | undefined): string {
+  if (!fileUrl) return ''
+  if (fileUrl.startsWith('http://') || fileUrl.startsWith('https://')) return fileUrl
+  return `${API_BASE}${fileUrl}`
 }
 
-export function getCouncilMinuteFileUrl(file: string) {
-  if (!file) return ''
-  if (file.startsWith('http')) return file
-  return `${API_BASE}${file}`
-}
-
-export async function getPublicCouncilMinutes() {
-  return apiRequest<ApiCouncilMinute[]>('/api/council-minutes')
-}
-
-export async function getAdminCouncilMinutes() {
-  const token = getAdminToken()
-  if (!token) throw new Error('No autenticado.')
-  return apiRequest<ApiCouncilMinute[]>('/api/council-minutes', { token })
-}
-
-export async function createAdminCouncilMinute(payload: FormData) {
-  const token = getAdminToken()
-  if (!token) throw new Error('No autenticado.')
-  return apiRequest<ApiCouncilMinute>('/api/council-minutes', {
-    method: 'POST',
-    body: payload,
-    token,
-  })
-}
-
-export async function updateAdminCouncilMinute(id: number, payload: FormData) {
-  const token = getAdminToken()
-  if (!token) throw new Error('No autenticado.')
-  return apiRequest<ApiCouncilMinute>(`/api/council-minutes/${id}`, {
-    method: 'PUT',
-    body: payload,
-    token,
-  })
-}
-
-export async function deleteAdminCouncilMinute(id: number) {
-  const token = getAdminToken()
-  if (!token) throw new Error('No autenticado.')
-  return apiRequest<{ ok: boolean }>(`/api/council-minutes/${id}`, {
-    method: 'DELETE',
-    token,
-  })
+/** Devuelve las actas publicadas. */
+export async function getPublicCouncilMinutes(): Promise<ApiCouncilMinute[]> {
+  const res = await fetch(`${API_BASE}/api/council-minutes?limit=50`)
+  if (!res.ok) throw new Error('No se pudieron cargar las actas.')
+  return (await res.json()) as ApiCouncilMinute[]
 }

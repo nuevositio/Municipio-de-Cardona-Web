@@ -1,85 +1,84 @@
 import type { NewsItem } from '@/types/content'
 
 export const news: NewsItem[] = [
-	{
-		id: 'news-1',
-		slug: 'avances-plan-gestion-residuos-mejoras-operativas-territoriales',
-		title: 'Avances en el Plan de Gestion de Residuos con mejoras operativas y territoriales',
-		excerpt:
-			'El Municipio incorpora un vehiculo reacondicionado e intensifica recorridas territoriales para fortalecer la gestion de residuos domiciliarios.',
-		content:
-			'El Plan de Gestion de Residuos continua avanzando en la mejora de su sistema mediante la incorporacion de un vehiculo reacondicionado, equipado con paneles laterales que permiten evitar la dispersion de los materiales durante su traslado. La unidad ha sido ademas identificada con grafica institucional, facilitando su reconocimiento en territorio.\n\nLas mejoras realizadas en el vehiculo fueron posibles gracias al apoyo del Plan Vale, una iniciativa de alcance nacional orientada a la recuperacion y valorizacion de envases y materiales de envasado posconsumo. Este programa, impulsado por la Camara de Industrias junto a mas de 2.500 empresas adheridas, busca dar cumplimiento a la normativa vigente, optimizar recursos mediante economias de escala y contribuir al desarrollo de la economia circular, alineado a los Objetivos de Desarrollo Sostenible.\n\nA estas acciones se suma el trabajo del equipo de formadores, quienes se encuentran desarrollando recorridas en distintos puntos de la ciudad. Su funcion consiste en visitar los hogares para informar a los vecinos sobre el funcionamiento y los lineamientos del plan de gestion de residuos domiciliarios.\n\nDurante estas instancias, se realiza ademas un relevamiento breve que permite recabar datos precisos sobre las practicas de disposicion de residuos, con el objetivo de evaluar el sistema vigente y generar insumos que contribuyan a su mejora continua.\n\nEsta informacion permitira ajustar estrategias, optimizar recursos y avanzar en la implementacion de medidas que favorezcan una gestion mas eficiente y ordenada de los residuos a nivel local.',
-		image: '/images/avances-plan-gestion-residuos.jpeg',
-		date: '2026-03-22',
-		category: 'Ambiente',
-		featured: true,
-	},
-	{
-		id: 'news-2',
-		slug: 'sesion-concejo-municipal-realizada-en-juan-jackson',
-		title: 'Sesion del Concejo Municipal se realizo en Juan Jackson',
-		excerpt:
-			'El Concejo Municipal desarrollo su sesion ordinaria en Juan Jackson con participacion vecinal y planteos sobre temas locales.',
-		content:
-			'El Concejo del Municipio de Cardona llevo a cabo su sesion ordinaria el pasado miercoles en la localidad de Juan Jackson, instancia que se desarrollo con la presencia del alcalde Gabriel Bentancur y los concejales Juan Antonio Alvarez, Gabriela Magnano, Franco Nunez, Monica Castro y Miriam Lopez.\n\nLa realizacion de esta sesion en territorio responde a una iniciativa impulsada el pasado ano por la concejal Monica Castro, mediante la cual el Concejo ha promovido la descentralizacion de sus reuniones, desarrollando encuentros en distintos puntos de la jurisdiccion con el objetivo de acercar la gestion municipal a los vecinos.\n\nLa instancia conto con una nutrida participacion de residentes de la zona, quienes aprovecharon el espacio para plantear diversas inquietudes y propuestas vinculadas a temas de interes local. Entre los principales asuntos abordados se destacaron planteos relacionados con el estado de las calles, mejoras en iluminacion publica y el mantenimiento de espacios comunitarios.\n\nAsimismo, se plantearon inquietudes vinculadas a aspectos de salud, seguridad y otras situaciones que requieren la intervencion o coordinacion con organismos competentes. Todos los planteamientos realizados por los vecinos seran canalizados por el Concejo Municipal a traves de los mecanismos institucionales correspondientes, con el objetivo de dar seguimiento a cada una de las situaciones expuestas.',
-		image: '/images/sesion-concejo-juan-jackson.jpeg',
-		date: '2026-03-22',
-		category: 'Gobierno local',
-		featured: false,
-	},
-	{
-		id: 'news-3',
-		slug: 'alumnos-escuela-93-visitan-inventario-documental-estacion-afe',
-		title:
-			'Alumnos de Escuela N 93 visitan trabajos de inventario documental en Estacion AFE',
-		excerpt:
-			'Alumnos de Florencio Sanchez recorren la Estacion AFE Cardona y participan en actividades de memoria e investigacion del patrimonio ferroviario.',
-		content:
-			'Alumnos de la Escuela N 93 de Florencio Sanchez participan durante estos dias de visitas a la Estacion AFE Cardona, donde se vienen desarrollando tareas de relevamiento e inventario documental del material existente en el lugar.\n\nLas visitas comenzaron el pasado martes y se extenderan hasta el proximo lunes, con la participacion de grupos de estudiantes desde 3o a 6o ano. Durante las jornadas, los alumnos son recibidos por integrantes del equipo que trabaja en el sitio, conformado por funcionarios municipales y ex funcionarios de AFE.\n\nEn la jornada de hoy estuvo presente el alcalde Gabriel Bentancur, quien acompano la instancia de intercambio con los estudiantes.\n\nDurante las actividades se exponen aspectos vinculados al proceso de reconstruccion de la historia local, el valor de los testimonios y documentos existentes y la importancia del trabajo participativo de la comunidad en la preservacion del patrimonio ferroviario.\n\nAsimismo, se invita a los alumnos a participar en distintas propuestas vinculadas a la investigacion y al reconocimiento del origen de las comunidades y de los espacios asociados al desarrollo ferroviario de la region.\n\nDesde el Municipio de Cardona se invita a instituciones educativas y a vecinos interesados a acercarse a la Estacion AFE para conocer y participar de las tareas que se vienen llevando adelante.',
-		image: '/images/alumnos-escuela-93-estacion-afe.jpeg',
-		date: '2026-03-22',
-		category: 'Educacion y patrimonio',
-		featured: false,
-	},
-	{
-		id: 'news-4',
-		slug: 'alcalde-recorrida-zonas-rurales-complejo-mevir',
-		title: 'Alcalde realizo recorrida por zonas rurales y complejo MEVIR',
-		excerpt:
-			'Gabriel Bentancur visito Cuchilla del Perdido y el complejo MEVIR para relevar tareas de mantenimiento e intercambiar con vecinos.',
-		content:
-			'El alcalde del Municipio de Cardona, Gabriel Bentancur, realizo durante la presente jornada una recorrida por distintos puntos del territorio con el objetivo de observar tareas de mantenimiento y dialogar con vecinos.\n\nLa actividad incluyo una visita a la zona de Cuchilla del Perdido, donde se vienen desarrollando trabajos de mantenimiento y recuperacion de camineria rural. Durante la recorrida se evaluo el estado de los caminos y las tareas ejecutadas por las cuadrillas que trabajan en el lugar.\n\nPosteriormente, el alcalde se traslado al complejo MEVIR de dicho paraje rural, donde se ejecutan tareas vinculadas al mantenimiento de los espacios del entorno. Entre los trabajos realizados se encuentran el corte de cesped, mejoras en accesos, recuperacion de estaciones juegos para ninos y pintura de la garita de omnibus.\n\nDurante la visita, vecinos del lugar se acercaron para plantear inquietudes relacionadas con el mantenimiento y la mejora del complejo, manteniendose un intercambio sobre distintos aspectos vinculados al funcionamiento y acondicionamiento del espacio.',
-		image: '/images/alcalde-recorrida-zonas-rurales-mevir.jpeg',
-		date: '2026-03-22',
-		category: 'Territorio',
-		featured: false,
-	},
-	{
-		id: 'news-5',
-		slug: 'conmemoracion-125-anos-primer-tren-estacion-la-lata',
-		title: 'Conmemoracion de los 125 anos de la llegada del primer tren a Estacion "La Lata"',
-		excerpt:
-			'El Municipio de Cardona celebro el aniversario 125 de la llegada del primer tren a la Estacion "La Lata" con un acto oficial que incluyo la presentacion de un sello conmemorativo del Correo Uruguayo.',
-		content:
-			'En la jornada de este lunes 2 de marzo se realizo en el Salon de Actos del Municipio de Cardona la conmemoracion de los 125 anos de la llegada del primer tren a la Estacion "La Lata", hecho ocurrido el 1 de marzo de 1901, cuando arribo la primera formacion ferroviaria correspondiente a la linea que avanzaba desde Mal Abrigo hacia Mercedes.\n\nDurante la ceremonia se presento oficialmente el sello conmemorativo emitido por el Correo Uruguayo, incorporando este aniversario al calendario filatelico nacional. En la instancia se procedio al descubrimiento de la gigantografia del sello y al matasellado oficial del sobre conmemorativo, con participacion de autoridades y exfuncionarios ferroviarios.\n\nEl historiador Dr. Enrique Bianchi realizo una resena historica del proceso ferroviario en el oeste del pais. Recordo que el primer proyecto regional data de 1853, que en 1896 se otorgo la concesion de la red de los Ferrocarriles del Oeste y que el 22 de febrero de 1901 el gobierno aprobo el tramo hasta "La Lata", arribando el primer tren el 1 de marzo de ese ano.\n\nEn la actividad estuvieron presentes el Intendente de Soriano, Guillermo Besozzi; el Alcalde de Cardona, Gabriel Bentancur; el Director de la Comision del Patrimonio Cultural de la Nacion, Marcel Suarez; el Vicepresidente de AFE, Dr. Williams Kelland; el Vicepresidente y Director del Correo Uruguayo, Arq. Jose Luis Pereira Simonelli; el Director del Correo, Jose Hualde; junto a diputados, ediles, autoridades departamentales y locales y vecinos.\n\nEl Director de la Comision del Patrimonio Cultural de la Nacion informo que el proyecto de resolucion para declarar el complejo ferroviario de Cardona como Monumento Historico Nacional fue elevado al Ministerio de Educacion y Cultura para la firma ministerial.\n\nLa jornada incluyo una visita a la Estacion AFE de Cardona y al Museo Esc. Jesus Aguiar Melian de la Sociedad Criolla "La Lata Vieja", integrando el componente patrimonial a la agenda oficial de la conmemoracion.',
-		image: '/images/conmemoracion-125-anos-tren-la-lata.jpeg',
-		date: '2026-03-02',
-		category: 'Patrimonio',
-		featured: false,
-	},
-	{
-		id: 'news-6',
-		slug: 'apertura-jornada-capacitacion-municipios-cardona',
-		title: 'Apertura de jornada de capacitacion para municipios en Cardona',
-		excerpt:
-			'Cardona fue sede de una jornada de capacitacion para municipios de la region, centrada en planificacion municipal y el Fondo de Incentivo a la Gestion Municipal en el marco del nuevo quinquenio.',
-		content:
-			'En la ciudad de Cardona se realizo la apertura de una jornada de capacitacion dirigida a municipios de la region, con la participacion de autoridades nacionales, departamentales y locales. La actividad se desarrolla en instalaciones del Liceo "Dr. Justo P. Rodriguez".\n\nLa mesa de apertura estuvo integrada por Adul Nebu, Director de Planificacion de la Intendencia de Soriano; Jose Manuel Arenas, representante de la Oficina de Planeamiento y Presupuesto (OPP); Juan Gabriel Bentancur, Alcalde del Municipio de Cardona; y Nicolas Pereira, Director de Cohesion Social.\n\nEn su intervencion, el Alcalde destaco la realizacion de la instancia en el interior del pais y agradecio la participacion de las autoridades presentes.\n\nPor su parte, Nicolas Pereira informo que el ciclo de capacitacion se centra en la planificacion municipal, en el marco del presupuesto quinquenal aprobado y con creditos presupuestales disponibles para los 136 municipios del pais. Senalo que la Comision Sectorial de Descentralizacion aprobo en diciembre un nuevo reglamento del Fondo de Incentivo a la Gestion Municipal, el cual incorpora la reincorporacion de planes quinquenales, el fortalecimiento de planes operativos y la inclusion de compromisos de gestion.\n\nIndico ademas que el Fondo de Incentivo a la Gestion Municipal superara los 2.500 millones de pesos en el actual quinquenio, destinados a obras y politicas de desarrollo local. La asignacion correspondiente al ano 2026 ya fue definida, mientras que la distribucion para el periodo 2027-2030 sera acordada entre el Congreso de Intendentes y el Poder Ejecutivo. Tambien se preve proponer un anticipo del 20% del literal B para los municipios.\n\nJose Manuel Arenas destaco que el fondo constituye la principal fuente de recursos para los municipios y recordo que el 30 de julio de 2025 el gobierno nacional y las 19 intendencias acordaron la distribucion global de recursos, quedando pendiente la definicion por municipio. Confirmo que la asignacion para 2026 incluye a 11 nuevos municipios.\n\nAdul Nebu subrayo la importancia del apoyo tecnico de las intendencias a los municipios y senalo la incorporacion de Villa Soriano como nuevo municipio en el departamento.',
-		image: '/images/jornada-capacitacion-municipios-cardona.jpeg',
-		date: '2026-03-22',
-		category: 'Gobierno local',
-		featured: false,
-	},
+  {
+    id: 'news-1',
+    slug: 'inauguracion-plaza-central-renovada',
+    title: 'Inauguracion de la Plaza Central renovada con nuevos espacios verdes',
+    excerpt:
+      'El Municipio concluyo las obras de renovacion de la Plaza Central, que incorpora juegos infantiles, luminaria LED y nuevas plantaciones.',
+    content:
+      'El Municipio concluyo las obras de renovacion de la Plaza Central luego de cuatro meses de trabajos. Las mejoras incluyen la incorporacion de juegos infantiles de ultima generacion, un sistema de luminaria LED de bajo consumo y la plantacion de 60 nuevos arboles y arbustos nativos.\n\nLa obra fue financiada a traves del Fondo de Incentivo a la Gestion Municipal y ejecutada por cuadrillas municipales en coordinacion con una empresa local. El proyecto fue presentado por vecinos durante una sesion abierta del Concejo realizada el ano anterior.\n\nDurante el acto inaugural, el alcalde/sa destaco la importancia de los espacios publicos como lugares de encuentro y convivencia, y anuncio que en los proximos meses se encarara la renovacion de otros dos espacios verdes del territorio.\n\nLa plaza cuenta ademas con un area de ejercicio al aire libre, bancos y mesas de madera reciclada y conectividad wifi gratuita en un radio de 50 metros.',
+    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=800&q=80',
+    date: '2026-03-20',
+    category: 'Obras publicas',
+    featured: true,
+  },
+  {
+    id: 'news-2',
+    slug: 'sesion-concejo-barrio-sur',
+    title: 'El Concejo Municipal sesiono en el Barrio Sur con vecinos',
+    excerpt:
+      'La sesion itinerante reunio a mas de 80 residentes que plantearon inquietudes sobre servicios, infraestructura y seguridad.',
+    content:
+      'El Concejo Municipal realizo su sesion ordinaria en el Centro Comunal del Barrio Sur, en el marco del programa de sesiones itinerantes que busca acercar la gestion municipal a todos los rincones del territorio.\n\nMas de 80 vecinos participaron activamente de la instancia, planteando inquietudes sobre el estado de las calles internas, la frecuencia del servicio de recoleccion de residuos y el funcionamiento del alumbrado publico en la zona.\n\nTambien se abordaron temas vinculados a la seguridad vial y la necesidad de reductores de velocidad en los accesos al barrio. Todos los planteos quedaron registrados en acta y seran derivados a los organismos competentes.\n\nEl Concejo informo que las proximas sesiones itinerantes se realizaran en la localidad del interior del departamento y en el barrio norte de la ciudad.',
+    image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&q=80',
+    date: '2026-03-18',
+    category: 'Gobierno local',
+    featured: false,
+  },
+  {
+    id: 'news-3',
+    slug: 'alumnos-visitan-museo-patrimonio',
+    title: 'Escolares visitan el Museo de Historia Local en jornada educativa',
+    excerpt:
+      'Estudiantes de primaria participaron de recorridas guiadas por el Museo, conociendo la historia del territorio y su patrimonio cultural.',
+    content:
+      'Mas de 120 estudiantes de escuelas primarias del municipio participaron esta semana de jornadas educativas en el Museo de Historia Local, en el marco de un convenio firmado entre el Municipio y la inspeccion departamental de educacion primaria.\n\nLas recorridas guiadas incluyeron exposiciones permanentes sobre la fundacion del pueblo, el desarrollo productivo regional y las tradiciones culturales populares. Los ninos tambien participaron de talleres de ceramica y tejido artesanal a cargo de artesanos locales.\n\nEl director del museo destaco que estas visitas contribuyen a fortalecer la identidad de los jovenes con su territorio y a valorar el patrimonio historico. Ademas, anuncio que en las proximas semanas se inaugurara una sala interactiva dedicada a la historia oral de los pobladores mas antiguos.\n\nLas visitas continuaran durante todo el mes de abril, con cupos para instituciones educativas de todos los niveles.',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+    date: '2026-03-15',
+    category: 'Educacion y patrimonio',
+    featured: false,
+  },
+  {
+    id: 'news-4',
+    slug: 'mejoras-camineria-rural-zona-norte',
+    title: 'Avanzan las mejoras de camineria rural en la zona norte del municipio',
+    excerpt:
+      'Las cuadrillas municipales trabajan en la reparacion de 18 km de caminos rurales para mejorar la conectividad de productores y familias.',
+    content:
+      'El Municipio lleva adelante trabajos de mejoramiento de camineria rural en la zona norte del territorio, abarcando una longitud total de 18 kilometros que conectan establecimientos productivos y nucleos poblados pequenos con la ruta principal.\n\nLas tareas incluyen perfilado y compactado del suelo, colocacion de material granular en los tramos mas deteriorados y limpieza de cunetas para favorecer el escurrimiento del agua en episodios de lluvia. Las obras cuentan con el apoyo de maquinaria pesada del departamento y se ejecutan con personal municipal.\n\nProductores rurales de la zona expresaron su satisfaccion con los avances, senalando que el mal estado de los caminos afectaba directamente el traslado de insumos y la salida de la produccion. Varios de ellos se acercaron a dialogar con el equipo de trabajo durante la recorrida de supervision.\n\nLas obras se extenderan durante las proximas seis semanas y abarcaran tambien caminos vecinales que conectan con la localidad de la costa.',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
+    date: '2026-03-12',
+    category: 'Territorio',
+    featured: false,
+  },
+  {
+    id: 'news-5',
+    slug: 'festival-cultura-primavera-2026',
+    title: 'Festival de Cultura 2026 reunio a miles de vecinos durante el fin de semana',
+    excerpt:
+      'La tercera edicion del Festival de Cultura contó con mas de 40 artistas locales, stands artesanales, gastronomia y actividades para toda la familia.',
+    content:
+      'La tercera edicion del Festival de Cultura 2026 se realizo durante el fin de semana en el anfiteatro municipal, convocando a miles de vecinos de todas las edades en una jornada de celebracion de la identidad y el talento local.\n\nEl evento conto con actuaciones de mas de 40 artistas y agrupaciones locales en los rubros de musica, danza, teatro y expresion escenica. Tambien se instalaron 25 stands de artesanos y productores locales, y un espacio gastronomico con especialidades regionales.\n\nEl Municipio organizo actividades especiales para ninos, incluyendo talleres de plastica, malabares y un sector de juegos tradicionales. La entrada fue libre y gratuita para todo el publico.\n\nLa responsable del area de Cultura del Municipio destaco que el festival es una oportunidad unica para visibilizar el enorme potencial artistico de la comunidad y anuncio que para la proxima edicion se incorporaran artistas invitados de otros departamentos.',
+    image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80',
+    date: '2026-03-08',
+    category: 'Cultura',
+    featured: false,
+  },
+  {
+    id: 'news-6',
+    slug: 'programa-capacitacion-emprendedores-locales',
+    title: 'Municipio lanza programa de capacitacion para emprendedores locales',
+    excerpt:
+      'El programa ofrece talleres gratuitos de gestion, marketing digital y acceso a financiamiento para emprendedores del territorio.',
+    content:
+      'El Municipio lanzo un nuevo programa de capacitacion orientado a emprendedores locales que busca fortalecer las competencias de gestion, comercializacion y acceso a herramientas de financiamiento.\n\nEl programa, desarrollado en convenio con el Ministerio de Industria y organismos departamentales, ofrecera talleres presenciales y virtuales a lo largo de cuatro meses. Los modulos incluyen planificacion de negocios, marketing digital, habilitaciones comerciales y estrategias de exportacion para pequenos productores.\n\nLa convocatoria esta abierta a personas mayores de 18 anos que desarrollen o deseen iniciar una actividad productiva, comercial o de servicios en el municipio. La inscripcion es gratuita y puede realizarse en las oficinas municipales o a traves del sitio web.\n\nEn la presentacion del programa participaron autoridades municipales y representantes de la camara empresarial local, quienes destacaron la importancia de apoyar el desarrollo economico desde la base territorial.',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+    date: '2026-03-05',
+    category: 'Desarrollo local',
+    featured: false,
+  },
 ]
 
 export const featuredNews = news.filter((item) => item.featured)

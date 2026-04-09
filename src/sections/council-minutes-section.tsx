@@ -42,13 +42,13 @@ export function CouncilMinutesSection() {
                   <FileText size={18} />
                 </div>
                 <h3 className="font-heading text-lg leading-snug text-[--ink-900]">{item.title}</h3>
-                {item.description ? (
-                  <p className="mt-1 flex-1 text-sm text-[--ink-700]">{item.description}</p>
+                {item.summary ? (
+                  <p className="mt-1 flex-1 text-sm text-[--ink-700]">{item.summary}</p>
                 ) : null}
                 <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="text-xs text-[--ink-600]">{formatDate(item.date)}</span>
+                  <span className="text-xs text-[--ink-600]">{formatDate(item.publishedAt ?? item.createdAt)}</span>
                   <a
-                    href={getCouncilMinuteFileUrl(item.file)}
+                    href={getCouncilMinuteFileUrl(item.fileUrl)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-lg bg-[--brand-blue] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[--brand-blue-700]"

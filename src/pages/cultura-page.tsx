@@ -21,7 +21,7 @@ const cultureHighlights = [
     id: 'cul-3',
     icon: Landmark,
     title: 'Patrimonio local',
-    description: 'Acciones de puesta en valor de la historia y memoria colectiva de Cardona.',
+    description: 'Acciones de puesta en valor de la historia y memoria colectiva de la comunidad.',
   },
 ]
 
@@ -30,7 +30,7 @@ export function CulturaPage() {
     <>
       <SEO
         title="Cultura"
-        description="Propuestas culturales, actividades y programas comunitarios en Cardona."
+        description="Propuestas culturales, actividades y programas comunitarios del Municipio."
       />
       <PageHero
         title="Cultura"

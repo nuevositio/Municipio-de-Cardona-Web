@@ -1,0 +1,54 @@
+services:
+  - type: web
+    name: milocapp-cardona-api
+    runtime: node
+    region: ohio          # us-east-1 — más cercano a Neon us-east-2
+    plan: free
+
+    buildCommand: npm install && npm run build:server
+    startCommand: npm run start:server
+
+    healthCheckPath: /api/health
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: "4000"
+
+      # ── Sesion ─────────────────────────────────────────────────────────
+      - key: SESSION_SECRET
+        generateValue: true   # Render genera un valor seguro automáticamente
+
+      # ── Frontend origin (Vercel) ────────────────────────────────────────
+      - key: FRONTEND_ORIGIN
+        sync: false           # Se configura manualmente en el dashboard
+
+      # ── Neon PostgreSQL ─────────────────────────────────────────────────
+      - key: DATABASE_URL
+        sync: false
+
+      - key: DIRECT_URL
+        sync: false
+
+      # ── Supabase Storage ────────────────────────────────────────────────
+      - key: SUPABASE_URL
+        sync: false
+
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+
+      # ── Cloudflare Turnstile ────────────────────────────────────────────
+      - key: CLOUDFLARE_TURNSTILE_SECRET
+        sync: false
+
+      # ── Bootstrap superadmin (solo primer deploy) ───────────────────────
+      - key: SUPERADMIN_USERNAME
+        sync: false
+
+      - key: SUPERADMIN_EMAIL
+        sync: false
+
+      - key: SUPERADMIN_PASSWORD
+        sync: false

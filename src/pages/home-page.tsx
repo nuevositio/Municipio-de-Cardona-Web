@@ -12,7 +12,7 @@ export function HomePage() {
     <>
       <SEO
         title="Inicio"
-        description="Sitio oficial del Municipio de Cardona con noticias, tramites, transparencia y servicios para la ciudadania."
+        description="Sitio oficial del Municipio con noticias, tramites, transparencia y servicios para la ciudadania."
       />
 
       <HeroSlider />

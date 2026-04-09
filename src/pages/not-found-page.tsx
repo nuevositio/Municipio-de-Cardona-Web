@@ -8,7 +8,7 @@ export function NotFoundPage() {
     <section className="mx-auto mt-12 max-w-xl rounded-3xl border border-[--line] bg-white p-10 text-center shadow-sm">
       <SEO
         title="404"
-        description="La pagina solicitada no fue encontrada en el sitio del Municipio de Cardona."
+        description="La pagina solicitada no fue encontrada en el sitio del Municipio."
       />
       <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[--brand-blue]">Error 404</p>
       <h1 className="mt-2 font-heading text-3xl text-[--ink-900]">Pagina no encontrada</h1>

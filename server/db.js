@@ -76,6 +76,18 @@ export async function initializeDb() {
       updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )
   `)
+
+  await run(`
+    CREATE TABLE IF NOT EXISTS resolutions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      date TEXT NOT NULL,
+      description TEXT NOT NULL DEFAULT '',
+      file TEXT NOT NULL,
+      createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+  `)
 }
 
 export async function insertNews(news) {
@@ -128,4 +140,29 @@ export async function updateCouncilMinuteById(id, minute) {
 
 export async function deleteCouncilMinuteById(id) {
   await run(`DELETE FROM council_minutes WHERE id = ?`, [id])
+}
+
+// ── Resoluciones ────────────────────────────────────────────────────────────
+
+export async function insertResolution(resolution) {
+  const { title, date, description, file } = resolution
+  const result = await run(
+    `INSERT INTO resolutions (title, date, description, file) VALUES (?, ?, ?, ?)`,
+    [title, date, description, file],
+  )
+  return result.lastID
+}
+
+export async function updateResolutionById(id, resolution) {
+  const { title, date, description, file } = resolution
+  await run(
+    `UPDATE resolutions
+     SET title = ?, date = ?, description = ?, file = ?, updatedAt = CURRENT_TIMESTAMP
+     WHERE id = ?`,
+    [title, date, description, file, id],
+  )
+}
+
+export async function deleteResolutionById(id) {
+  await run(`DELETE FROM resolutions WHERE id = ?`, [id])
 }

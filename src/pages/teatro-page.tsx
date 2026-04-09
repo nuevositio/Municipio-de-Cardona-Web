@@ -30,11 +30,11 @@ export function TeatroPage() {
     <>
       <SEO
         title="Teatro"
-        description="Cartelera, actividades y acciones culturales del Teatro Municipal de Cardona."
+        description="Cartelera, actividades y acciones culturales del Teatro Municipal."
       />
       <PageHero
         title="Teatro"
-        description="El Teatro Municipal de Cardona promueve la produccion artistica local y el acceso ciudadano a propuestas escenicas de calidad."
+        description="El Teatro Municipal promueve la produccion artistica local y el acceso ciudadano a propuestas escenicas de calidad."
       />
 
       <section className="mt-8 grid gap-5 md:grid-cols-3">

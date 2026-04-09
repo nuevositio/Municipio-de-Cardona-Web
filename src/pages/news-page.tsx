@@ -52,7 +52,7 @@ export function NewsPage() {
     <>
       <SEO
         title="Noticias"
-        description="Todas las noticias del Municipio de Cardona en un solo lugar."
+        description="Todas las noticias del Municipio en un solo lugar."
       />
 
       <header className="mb-8">

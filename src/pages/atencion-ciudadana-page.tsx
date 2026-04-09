@@ -16,13 +16,13 @@ const services = [
     id: 'svc-2',
     icon: Clock3,
     title: 'Horarios de atencion',
-    description: 'Lunes a viernes de 08:00 a 14:00 en oficinas del Municipio de Cardona.',
+    description: 'Lunes a viernes de 08:00 a 14:00 en oficinas del Municipio.',
   },
   {
     id: 'svc-3',
     icon: MapPin,
     title: 'Direccion oficial',
-    description: 'Lavalleja 1308, Cardona, Soriano, Uruguay.',
+    description: 'Sede central del Municipio. Consultanos para confirmar la direccion actualizada.',
   },
 ]
 
@@ -31,7 +31,7 @@ export function AtencionCiudadanaPage() {
     <>
       <SEO
         title="Atencion Ciudadana"
-        description="Canales de atencion ciudadana y orientacion de tramites del Municipio de Cardona."
+        description="Canales de atencion ciudadana y orientacion de tramites del Municipio."
       />
       <section id="atencion">
         <PageHero
@@ -69,7 +69,7 @@ export function AtencionCiudadanaPage() {
               <div>
                 <CardTitle>Telefonos e internos</CardTitle>
                 <p className="mt-1 text-sm text-[--ink-700]">
-                  Guia de contacto por area y seccion del Municipio de Cardona.
+                  Guia de contacto por area y seccion del Municipio.
                 </p>
               </div>
             </div>

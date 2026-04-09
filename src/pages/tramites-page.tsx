@@ -36,7 +36,7 @@ export function TramitesPage() {
     <>
       <SEO
         title="Tramites"
-        description="Informacion y accesos a tramites municipales del Municipio de Cardona."
+        description="Informacion y accesos a tramites municipales del Municipio."
       />
       <PageHero
         title="Tramites municipales"

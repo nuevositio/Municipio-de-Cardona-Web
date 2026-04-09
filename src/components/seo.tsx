@@ -5,7 +5,7 @@ interface SEOProps {
   description: string
 }
 
-const BASE_TITLE = 'Municipio de Cardona'
+const BASE_TITLE = 'Tu Municipio'
 
 export function SEO({ title, description }: SEOProps) {
   return (
