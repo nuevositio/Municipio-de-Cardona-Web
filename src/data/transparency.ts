@@ -39,4 +39,11 @@ export const transparencyItems: TransparencyItem[] = [
     type: 'Documento publico',
     link: '#',
   },
+  {
+    id: 'tr-6',
+    title: 'Solicitud de Colaboraciones',
+    description: 'Formulario y requisitos para presentar solicitudes de colaboración al Municipio.',
+    type: 'Solicitud',
+    link: '#',
+  },
 ]

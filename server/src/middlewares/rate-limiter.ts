@@ -13,3 +13,17 @@ export const loginRateLimiter = rateLimit({
   standardHeaders: 'draft-7',
   legacyHeaders: false,
 })
+
+/**
+ * Limita las consultas al chatbot IA a 20 mensajes por IP cada 10 minutos.
+ * Evita abuso de la API de OpenAI.
+ */
+export const chatRateLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 20,
+  message: {
+    message: 'Demasiadas consultas. Intentá nuevamente en unos minutos.',
+  },
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+})

@@ -23,6 +23,7 @@ export type TransparencyType =
   | 'Presupuesto'
   | 'Licitacion'
   | 'Documento publico'
+  | 'Solicitud'
 
 export interface TransparencyItem {
   id: string

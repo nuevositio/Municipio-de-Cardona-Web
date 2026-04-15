@@ -18,6 +18,7 @@ import { NewsPage }               from '@/pages/news-page'
 import { NotFoundPage }           from '@/pages/not-found-page'
 import { TeatroPage }             from '@/pages/teatro-page'
 import { TramitesPage }           from '@/pages/tramites-page'
+import { VencimientosPage }       from '@/pages/vencimientos-page'
 import { CouncilMinutesPage }     from '@/pages/council-minutes-page'
 import { ResolutionsPage }        from '@/pages/resolutions-page'
 
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
       { path: 'noticias',        element: <NewsPage /> },
       { path: 'noticias/:slug',  element: <NewsDetailPage /> },
       { path: 'tramites',        element: <TramitesPage /> },
+      { path: 'vencimientos',     element: <VencimientosPage /> },
       { path: 'actas',           element: <CouncilMinutesPage /> },
       { path: 'resoluciones',    element: <ResolutionsPage /> },
       { path: 'cultura',         element: <CulturaPage /> },

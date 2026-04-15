@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { authRouter }        from './auth.js'
+import { chatRouter }        from './chat.js'
 import { newsRouter }        from './news.js'
 import { minutesRouter }     from './minutes.js'
 import { resolutionsRouter } from './resolutions.js'
@@ -11,6 +12,9 @@ export const router = Router()
 
 // ── Rutas públicas (sin autenticación) ────────────────────────────────────────
 router.use('/', publicRouter)
+
+// Chatbot IA (público, con rate-limit propio)
+router.use('/chat', chatRouter)
 
 // Autenticación (login, logout, me)
 router.use('/admin/auth',        authRouter)

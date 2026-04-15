@@ -36,16 +36,16 @@ export const SITE = {
 
   /** Información de contacto */
   contact: {
-    address:  'Florida 267, Cardona — Soriano, Uruguay',
-    phone:    '+598 4534 2148',
-    email:    'municipio@cardona.gub.uy',
-    whatsapp: '59845342148',   // Sin +, sin espacios (para enlace wa.me)
+    address:  'Lavalleja 1308, Cardona — Soriano, Uruguay',
+    phone:    '4536 9004',
+    email:    'municipio.cardona@soriano.gub.uy',
+    whatsapp: '59897961163',   // Sin +, sin espacios (para enlace wa.me)
   },
 
   /** Redes sociales (null = no mostrar) */
   social: {
-    facebook:  'https://www.facebook.com/municipiodecardona' as string | null,
-    instagram: null as string | null,
+    facebook:  'https://www.facebook.com/cardona.unmunicipioactivo/?locale=es_LA' as string | null,
+    instagram: 'https://www.instagram.com/municipiodecardona/' as string | null,
     twitter:   null as string | null,
     youtube:   null as string | null,
   },

@@ -1,4 +1,4 @@
-import { FileBadge2, FileText, FolderOpenDot, Gavel, Scale } from 'lucide-react'
+import { FileBadge2, FileText, FolderOpenDot, Gavel, HandCoins, Scale } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -13,6 +13,7 @@ const iconByType: Record<TransparencyType, ComponentType<{ size?: number }>> = {
   Presupuesto: Scale,
   Licitacion: Gavel,
   'Documento publico': FolderOpenDot,
+  Solicitud: HandCoins,
 }
 
 export function TransparencySection() {
