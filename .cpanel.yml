@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/adminmlc/cardona
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R . $DEPLOYPATH
+    - cd $DEPLOYPATH && /usr/local/bin/npm install --omit=dev --prefer-offline 2>&1
