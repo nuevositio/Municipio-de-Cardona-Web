@@ -2,7 +2,7 @@ import { env } from './config/env.js';
 import { initializeDb, closeDb } from './db/connection.js';
 import { createApp } from './app.js';
 import { logger } from './utils/logger.js';
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 import { findUserByUsername, findUserByEmail, createUser, } from './models/user.model.js';
 import { getDb } from './db/connection.js';
 import { users } from './db/schema.js';
@@ -34,12 +34,7 @@ async function maybeBootstrap() {
         logger.info('Bootstrap: username o email ya en uso, omitiendo.');
         return;
     }
-    const passwordHash = await argon2.hash(SUPERADMIN_PASSWORD, {
-        type: argon2.argon2id,
-        memoryCost: 65536,
-        timeCost: 3,
-        parallelism: 4,
-    });
+    const passwordHash = await bcrypt.hash(SUPERADMIN_PASSWORD, 12);
     await createUser({
         username: SUPERADMIN_USERNAME,
         email: SUPERADMIN_EMAIL,

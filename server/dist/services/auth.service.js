@@ -1,4 +1,4 @@
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 import { findUserByUsername, incrementFailedAttempts, lockUserUntil, resetFailedAttempts, } from '../models/user.model.js';
 // Número de intentos fallidos antes de bloquear la cuenta
 const MAX_FAILED_ATTEMPTS = 5;
@@ -13,7 +13,7 @@ export async function verifyLogin(username, password) {
     // Respuesta uniforme para usuario inexistente y contraseña incorrecta:
     // evita enumerar usuarios válidos mediante timing o mensajes distintos.
     if (!user) {
-        await argon2.hash('dummy-password-to-normalize-timing');
+        await bcrypt.hash('dummy-password-to-normalize-timing', 10);
         return { ok: false, reason: 'not_found' };
     }
     if (!user.isActive) {
@@ -23,7 +23,7 @@ export async function verifyLogin(username, password) {
     if (user.lockedUntil && user.lockedUntil > new Date()) {
         return { ok: false, reason: 'locked' };
     }
-    const passwordOk = await argon2.verify(user.passwordHash, password);
+    const passwordOk = await bcrypt.compare(password, user.passwordHash);
     if (!passwordOk) {
         await incrementFailedAttempts(user.id);
         const updated = await findUserByUsername(username);

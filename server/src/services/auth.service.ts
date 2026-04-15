@@ -1,4 +1,4 @@
-import argon2 from 'argon2'
+import bcrypt from 'bcryptjs'
 import {
   findUserByUsername,
   incrementFailedAttempts,
@@ -29,7 +29,7 @@ export async function verifyLogin(
   // Respuesta uniforme para usuario inexistente y contraseña incorrecta:
   // evita enumerar usuarios válidos mediante timing o mensajes distintos.
   if (!user) {
-    await argon2.hash('dummy-password-to-normalize-timing')
+    await bcrypt.hash('dummy-password-to-normalize-timing', 10)
     return { ok: false, reason: 'not_found' }
   }
 
@@ -42,7 +42,7 @@ export async function verifyLogin(
     return { ok: false, reason: 'locked' }
   }
 
-  const passwordOk = await argon2.verify(user.passwordHash, password)
+  const passwordOk = await bcrypt.compare(password, user.passwordHash)
 
   if (!passwordOk) {
     await incrementFailedAttempts(user.id)

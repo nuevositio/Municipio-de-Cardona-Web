@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express'
-import argon2 from 'argon2'
+import bcrypt from 'bcryptjs'
 import {
   listUsers,
   findUserById,
@@ -66,12 +66,7 @@ export async function createUserController(
     }
 
     const { username, email, password, role } = parsed.data
-    const passwordHash = await argon2.hash(password, {
-      type: argon2.argon2id,
-      memoryCost: 65536,
-      timeCost: 3,
-      parallelism: 4,
-    })
+    const passwordHash = await bcrypt.hash(password, 12)
 
     const user = await createUser({
       username,
@@ -174,12 +169,7 @@ export async function resetPasswordController(
       return
     }
 
-    const passwordHash = await argon2.hash(parsed.data.newPassword, {
-      type: argon2.argon2id,
-      memoryCost: 65536,
-      timeCost: 3,
-      parallelism: 4,
-    })
+    const passwordHash = await bcrypt.hash(parsed.data.newPassword, 12)
 
     const updated = await updateUser(id, { passwordHash, mustChangePassword: true })
     if (!updated) {

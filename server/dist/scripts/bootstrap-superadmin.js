@@ -14,7 +14,7 @@
  *   SUPERADMIN_PASSWORD  — contraseña en texto plano (se hashea con Argon2id)
  */
 import 'dotenv/config';
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import { getDb } from '../db/connection.js';
 import { users } from '../db/schema.js';
@@ -78,14 +78,9 @@ async function bootstrap() {
             `            No se realizaron cambios.\n`);
         process.exit(0);
     }
-    // ── Hashear la contraseña con Argon2id ────────────────────────────────────
-    console.log('[bootstrap] Generando hash Argon2id...');
-    const passwordHash = await argon2.hash(SUPERADMIN_PASSWORD, {
-        type: argon2.argon2id,
-        memoryCost: 65536,
-        timeCost: 3,
-        parallelism: 4,
-    });
+    // ── Hashear la contraseña con bcrypt ─────────────────────────────────────
+    console.log('[bootstrap] Generando hash bcrypt...');
+    const passwordHash = await bcrypt.hash(SUPERADMIN_PASSWORD, 12);
     // ── Crear el usuario ──────────────────────────────────────────────────────
     const user = await createUser({
         username: SUPERADMIN_USERNAME,

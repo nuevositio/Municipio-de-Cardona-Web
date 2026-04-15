@@ -1,4 +1,4 @@
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 import { listUsers, findUserById, createUser, updateUser, deleteUser, } from '../models/user.model.js';
 import { createAuditLog } from '../models/audit-log.model.js';
 import { createUserSchema, updateUserSchema, resetPasswordSchema } from '../validators/index.js';
@@ -42,12 +42,7 @@ export async function createUserController(req, res, next) {
             return;
         }
         const { username, email, password, role } = parsed.data;
-        const passwordHash = await argon2.hash(password, {
-            type: argon2.argon2id,
-            memoryCost: 65536,
-            timeCost: 3,
-            parallelism: 4,
-        });
+        const passwordHash = await bcrypt.hash(password, 12);
         const user = await createUser({
             username,
             email,
@@ -131,12 +126,7 @@ export async function resetPasswordController(req, res, next) {
             });
             return;
         }
-        const passwordHash = await argon2.hash(parsed.data.newPassword, {
-            type: argon2.argon2id,
-            memoryCost: 65536,
-            timeCost: 3,
-            parallelism: 4,
-        });
+        const passwordHash = await bcrypt.hash(parsed.data.newPassword, 12);
         const updated = await updateUser(id, { passwordHash, mustChangePassword: true });
         if (!updated) {
             res.status(404).json({ message: 'Usuario no encontrado.' });
