@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/adminmlc/cardona
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R . $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/server
+    - /bin/cp -R server/dist $DEPLOYPATH/server/dist
+    - /bin/cp server/package.json $DEPLOYPATH/server/package.json
     - cd $DEPLOYPATH/server && /usr/local/bin/npm install --omit=dev 2>&1
