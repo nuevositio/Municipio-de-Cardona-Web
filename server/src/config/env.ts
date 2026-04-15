@@ -42,6 +42,9 @@ const schema = z.object({
   CLOUDFLARE_TURNSTILE_SECRET: z
     .string()
     .default('1x0000000000000000000000000000000AA'),
+
+  // ── OpenAI ────────────────────────────────────────────────────────────────
+  OPENAI_API_KEY: z.string().optional(),
 })
 
 const result = schema.safeParse(process.env)

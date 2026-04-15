@@ -8,9 +8,9 @@ export declare const env: {
     SUPABASE_URL: string;
     SUPABASE_SERVICE_KEY: string;
     CLOUDFLARE_TURNSTILE_SECRET: string;
-    OPENAI_API_KEY: string;
     DIRECT_URL?: string | undefined;
     SUPERADMIN_USERNAME?: string | undefined;
     SUPERADMIN_EMAIL?: string | undefined;
     SUPERADMIN_PASSWORD?: string | undefined;
+    OPENAI_API_KEY?: string | undefined;
 };
