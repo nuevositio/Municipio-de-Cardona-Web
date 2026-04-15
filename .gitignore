@@ -1,9 +1,11 @@
 node_modules
 .env
-dist
+# dist — incluido para deploy en cPanel (sin acceso SSH)
+# dist
 uploads
 *.zip
-server/dist
+# server/dist — incluido para deploy en cPanel
+# server/dist
 server/tsconfig.tsbuildinfo
 server/data/*.sqlite
 server/data/*.sqlite-shm

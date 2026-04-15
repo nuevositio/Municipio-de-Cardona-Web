@@ -1,0 +1,48 @@
+# ── Forzar HTTPS ─────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ── Reescritura para SPA React ───────────────────────────────────────────────
+# Redirige todas las rutas al index.html excepto archivos y directorios reales.
+# Requiere mod_rewrite (habilitado por defecto en cPanel).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # No reescribir archivos o directorios que existan físicamente
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Todo lo demás → index.html (React Router maneja la ruta)
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# ── Compresión gzip ──────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# ── Cache de assets con hash (Vite les pone hash en el nombre) ───────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # JS/CSS/Fonts con hash: cache 1 año
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 month"
+  ExpiresByType image/jpeg              "access plus 1 month"
+  ExpiresByType image/png               "access plus 1 month"
+  ExpiresByType image/svg+xml           "access plus 1 month"
+  # index.html nunca en caché para que el SPA siempre se actualice
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+# ── Headers de seguridad ─────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
